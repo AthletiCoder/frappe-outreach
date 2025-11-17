@@ -1,7 +1,7 @@
 app_name = "outreach"
 app_title = "Outreach"
 app_publisher = "Vadiraj Tirtha Das"
-app_description = "To maintain outreach records"
+app_description = "To manage typical activities of VOICE Outreach"
 app_email = "varunkumar.nagandla@gmail.com"
 app_license = "mit"
 
@@ -44,6 +44,9 @@ app_license = "mit"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_list_js = {
+    "Student": "public/js/student_list.js",
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}

@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:title",
+ "creation": "2025-10-18 21:34:03.883233",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "outreach_project",
+  "session_stack",
+  "deadline",
+  "description",
+  "attachments",
+  "status_options"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "outreach_project",
+   "fieldtype": "Link",
+   "label": "Outreach Project",
+   "options": "Outreach Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "session_stack",
+   "fieldtype": "Link",
+   "label": "Session Stack",
+   "options": "Session Stack",
+   "reqd": 1
+  },
+  {
+   "fieldname": "deadline",
+   "fieldtype": "Datetime",
+   "label": "Deadline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "attachments",
+   "fieldtype": "Attach",
+   "label": "Attachments"
+  },
+  {
+   "fieldname": "status_options",
+   "fieldtype": "Table",
+   "label": "Status Options",
+   "options": "Followup Status Option",
+   "reqd": 1
+  }
+ ],
+ "links": [],
+ "modified": "2025-10-18 21:40:19.737508",
+ "modified_by": "iskconcdec@gmail.com",
+ "module": "Outreach",
+ "name": "Followup Session",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Coordinator",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Volunteer"
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

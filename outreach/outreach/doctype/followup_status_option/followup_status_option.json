@@ -1,0 +1,17 @@
+{
+  "doctype": "DocType",
+  "name": "Followup Status Option",
+  "module": "Outreach",
+  "custom": 0,
+  "istable": 1,
+  "editable_grid": 1,
+  "fields": [
+    {
+      "fieldname": "option_label",
+      "fieldtype": "Data",
+      "label": "Option Label",
+      "reqd": 1,
+      "in_list_view": 1
+    }
+  ]
+}

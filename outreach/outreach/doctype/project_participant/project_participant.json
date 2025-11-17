@@ -1,0 +1,23 @@
+{
+  "doctype": "DocType",
+  "name": "Project Participant",
+  "module": "Outreach",
+  "custom": 0,
+  "istable": 1,
+  "fields": [
+    {
+      "fieldname": "student",
+      "fieldtype": "Link",
+      "label": "Student",
+      "options": "Student",
+      "reqd": 1
+    },
+    {
+      "fieldname": "role",
+      "fieldtype": "Select",
+      "label": "Role",
+      "options": "Admin\nCoordinator\nVolunteer",
+      "reqd": 1
+    }
+  ]
+}

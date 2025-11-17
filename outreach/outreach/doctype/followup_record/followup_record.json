@@ -1,0 +1,68 @@
+{
+  "doctype": "DocType",
+  "name": "Followup Record",
+  "module": "Outreach",
+  "custom": 0,
+  "fields": [
+    {
+      "fieldname": "followup_session",
+      "fieldtype": "Link",
+      "label": "Followup Session",
+      "options": "Followup Session",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "session_slot",
+      "fieldtype": "Link",
+      "label": "Session Slot",
+      "options": "Session Slot"
+    },
+    {
+      "fieldname": "student",
+      "fieldtype": "Link",
+      "label": "Student",
+      "options": "Student",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "assigned_to",
+      "fieldtype": "Link",
+      "label": "Assigned To",
+      "options": "User",
+      "reqd": 1
+    },
+    {
+      "fieldname": "call_status",
+      "fieldtype": "Select",
+      "label": "Call Status"
+    },
+    {
+      "fieldname": "remarks",
+      "fieldtype": "Small Text",
+      "label": "Remarks"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    },
+    {
+      "role": "Coordinator",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    },
+    {
+      "role": "Volunteer",
+      "read": 1,
+      "write": 1,
+      "create": 1
+    }
+  ]
+}

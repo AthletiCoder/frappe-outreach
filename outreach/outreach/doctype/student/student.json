@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{student_name}",
+ "creation": "2025-10-02 22:36:46.055478",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student_name",
+  "phone",
+  "native_place",
+  "department",
+  "mentor",
+  "last_call_made_at",
+  "last_session_invited_at",
+  "last_session_attended_at",
+  "column_break_zlbq",
+  "email",
+  "hostel",
+  "outreach_project",
+  "date_of_birth",
+  "contact",
+  "metadata"
+ ],
+ "fields": [
+  {
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Student Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Phone",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "hostel",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Hostel"
+  },
+  {
+   "fieldname": "native_place",
+   "fieldtype": "Data",
+   "label": "Native Place"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Department"
+  },
+  {
+   "description": "Optional JSON blob or key-value info",
+   "fieldname": "metadata",
+   "fieldtype": "Small Text",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "outreach_project",
+   "fieldtype": "Link",
+   "label": "Outreach Project",
+   "options": "Outreach Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Link",
+   "label": "Linked Contact",
+   "options": "Contact",
+   "reqd": 1
+  },
+  {
+   "description": "Organiser assigned as mentor",
+   "fieldname": "mentor",
+   "fieldtype": "Link",
+   "label": "Mentor",
+   "options": "User"
+  },
+  {
+   "fieldname": "last_call_made_at",
+   "fieldtype": "Datetime",
+   "label": "Last Call Made At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_session",
+   "fieldtype": "Data",
+   "label": "Last Attended Session",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_session_invited_at",
+   "fieldtype": "Datetime",
+   "label": "Last Session Invited At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_session_attended_at",
+   "fieldtype": "Datetime",
+   "label": "Last Session Attended At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zlbq",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "links": [],
+ "modified": "2025-10-18 09:24:20.341356",
+ "modified_by": "iskconcdec@gmail.com",
+ "module": "Outreach",
+ "name": "Student",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "Outreach Coordinator",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Outreach Volunteer",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}

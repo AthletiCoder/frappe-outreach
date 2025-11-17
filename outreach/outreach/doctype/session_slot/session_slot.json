@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{session_stack} at {venue}",
+ "creation": "2025-10-11 14:33:50.149501",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "session_stack",
+  "description",
+  "date_and_time",
+  "venue",
+  "speaker",
+  "column_break_fbgl"
+ ],
+ "fields": [
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "date_and_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Date and Time"
+  },
+  {
+   "fieldname": "venue",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Venue"
+  },
+  {
+   "fieldname": "session_stack",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Session Title",
+   "options": "Session Stack",
+   "reqd": 1
+  },
+  {
+   "fieldname": "speaker",
+   "fieldtype": "Link",
+   "label": "Speaker",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_fbgl",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "links": [],
+ "modified": "2025-10-16 11:38:15.440549",
+ "modified_by": "iskconcdec@gmail.com",
+ "module": "Outreach",
+ "name": "Session Slot",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "Outreach Coordinator",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Outreach Volunteer",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}
