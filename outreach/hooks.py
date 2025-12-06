@@ -25,8 +25,17 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
+
 # app_include_css = "/assets/outreach/css/outreach.css"
+app_include_css = [
+    "/assets/outreach/css/tabulator.min.css",
+    "/assets/outreach/css/followup_dashboard.css",
+]
+
 # app_include_js = "/assets/outreach/js/outreach.js"
+app_include_js = [
+    "/assets/outreach/js/tabulator.min.js",
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/outreach/css/outreach.css"
@@ -46,7 +55,13 @@ app_license = "mit"
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 doctype_list_js = {
     "Student": "public/js/student_list.js",
+    "Followup Record": "public/js/followup_record_list.js",
 }
+
+doctype_js = {
+    "Followup Record": "public/js/followup_record.js",
+}
+
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
