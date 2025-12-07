@@ -1,8 +1,15 @@
 frappe.ui.form.on("Followup Record", {
     refresh(frm) {
+        // 1) Dynamic call_status options from Followup Session
         set_call_status_options(frm);
 
-        // Add Call & WhatsApp buttons
+        // 2) Cache session_stack from Followup Session (for slot filtering)
+        cache_session_stack_from_session(frm);
+
+        // 3) Dynamic filter for Session Slot
+        set_session_slot_query(frm);
+
+        // 4) Add Call & WhatsApp buttons
         if (frm.doc.student) {
             frappe.db.get_value("Student", frm.doc.student, ["phone", "student_name"])
                 .then(r => {
@@ -25,48 +32,23 @@ frappe.ui.form.on("Followup Record", {
                     }
                 });
         }
-
-        // Dynamic filter for Preferred Session Slot
-        frm.set_query("preferred_session_slot", function () {
-            // First preference: session_stack already known on this document
-            let stack = frm.doc.session_stack;
-
-            // Fallback: derive from Followup Session (if needed)
-            if (!stack && frm.doc.followup_session) {
-                // We can't synchronously fetch here, so we assume session_stack is already
-                // stored on Followup Record OR set via another hook.
-            }
-
-            const filters = {
-                date_and_time: [">", frappe.datetime.now_datetime()],
-            };
-            if (stack) {
-                filters["session_stack"] = stack;
-            }
-
-            return {
-                filters: filters,
-            };
-        });
     },
+
     followup_session(frm) {
-        // when parent session changes, reload options and clear invalid value
+        // When parent session changes:
+        // 1) reload status options
         set_call_status_options(frm, true);
+
+        // 2) refresh cached stack + slot filter
+        cache_session_stack_from_session(frm, true);
+        set_session_slot_query(frm);
+
+        // 3) clear selected slot (so volunteer re-chooses a valid one)
+        frm.set_value("session_slot", null);
     },
 
-    // When preferred_session_slot changes, derive and set session_stack from the slot
-    preferred_session_slot: function (frm) {
-        if (!frm.doc.preferred_session_slot) {
-            return;
-        }
-        frappe.db.get_value("Session Slot", frm.doc.preferred_session_slot, ["session_stack"])
-            .then(r => {
-                const stack = r.message && r.message.session_stack;
-                if (stack && frm.doc.session_stack !== stack) {
-                    frm.set_value("session_stack", stack);
-                }
-            });
-    },
+    // If you want to do something when session_slot changes later, you can add:
+    // session_slot(frm) { ... }
 });
 
 function set_call_status_options(frm, reset_if_invalid = false) {
@@ -101,4 +83,49 @@ function set_call_status_options(frm, reset_if_invalid = false) {
         .catch(err => {
             console.error("Failed to load status options", err);
         });
+}
+
+/**
+ * Cache session_stack from Followup Session into frm._session_stack_for_filter
+ * (since there is no session_stack field on Followup Record).
+ */
+function cache_session_stack_from_session(frm, log_error) {
+    const session = frm.doc.followup_session;
+    if (!session) {
+        frm._session_stack_for_filter = null;
+        return;
+    }
+
+    frappe.db
+        .get_value("Followup Session", session, ["session_stack"])
+        .then(r => {
+            const stack = r.message && r.message.session_stack;
+            frm._session_stack_for_filter = stack || null;
+        })
+        .catch(err => {
+            if (log_error) {
+                console.error("Failed to fetch session_stack from Followup Session", err);
+            }
+            frm._session_stack_for_filter = null;
+        });
+}
+
+/**
+ * Filter session_slot to:
+ *   - only future slots (date_and_time > now)
+ *   - and, if we know the parent session_stack, only those slots in that stack
+ */
+function set_session_slot_query(frm) {
+    frm.set_query("session_slot", function () {
+        const filters = {
+            date_and_time: [">", frappe.datetime.now_datetime()],
+        };
+
+        // use cached stack from Followup Session if available
+        if (frm._session_stack_for_filter) {
+            filters["session_stack"] = frm._session_stack_for_filter;
+        }
+
+        return { filters };
+    });
 }
