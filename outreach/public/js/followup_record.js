@@ -32,6 +32,16 @@ frappe.ui.form.on("Followup Record", {
                     }
                 });
         }
+
+        // 5) View recent logs for this student
+        if (frm.doc.student) {
+            frm.add_custom_button(__("View Recent Logs"), () => {
+                frappe.route_options = {
+                    student: frm.doc.student,
+                };
+                frappe.set_route("List", "Followup Record", "List");
+            }, __("Logs"));
+        }
     },
 
     followup_session(frm) {
@@ -46,9 +56,6 @@ frappe.ui.form.on("Followup Record", {
         // 3) clear selected slot (so volunteer re-chooses a valid one)
         frm.set_value("session_slot", null);
     },
-
-    // If you want to do something when session_slot changes later, you can add:
-    // session_slot(frm) { ... }
 });
 
 function set_call_status_options(frm, reset_if_invalid = false) {
@@ -68,14 +75,12 @@ function set_call_status_options(frm, reset_if_invalid = false) {
                 .map(row => row.option_label)
                 .filter(Boolean);
 
-            // prepend an empty option so user can clear
             const options_string = [""]  // first blank
                 .concat(opts)
                 .join("\n");
 
             frm.set_df_property("call_status", "options", options_string);
 
-            // if current value is not in list, optionally reset
             if (reset_if_invalid && frm.doc.call_status && !opts.includes(frm.doc.call_status)) {
                 frm.set_value("call_status", "");
             }
@@ -121,7 +126,6 @@ function set_session_slot_query(frm) {
             date_and_time: [">", frappe.datetime.now_datetime()],
         };
 
-        // use cached stack from Followup Session if available
         if (frm._session_stack_for_filter) {
             filters["session_stack"] = frm._session_stack_for_filter;
         }
