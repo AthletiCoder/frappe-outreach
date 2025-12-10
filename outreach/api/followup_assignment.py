@@ -49,7 +49,7 @@ def assign_students_to_followup(students, followup_session, caller):
         doc.followup_session = followup_session
         doc.session_stack = session_stack
         doc.caller = caller
-        doc.call_status = "To Be Called"
+        doc.call_status = ""
         doc.insert(ignore_permissions=True)
         created.append(doc.name)
 

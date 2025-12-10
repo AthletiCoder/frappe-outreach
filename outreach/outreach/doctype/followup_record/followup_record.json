@@ -37,7 +37,8 @@
   {
    "fieldname": "call_status",
    "fieldtype": "Select",
-   "label": "Call Status"
+   "label": "Call Status",
+   "options": "Available\nWill Try\nNot Available\nDidn't Pick\nAttended\nFlunked\nPartially Attended"
   },
   {
    "fieldname": "remarks",
@@ -53,7 +54,7 @@
   }
  ],
  "links": [],
- "modified": "2025-12-06 07:09:14.653493",
+ "modified": "2025-12-10 17:37:35.880311",
  "modified_by": "Administrator",
  "module": "Outreach",
  "name": "Followup Record",

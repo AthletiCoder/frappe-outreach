@@ -8,19 +8,21 @@
  "field_order": [
   "student_name",
   "phone",
+  "hostel",
+  "mentor",
+  "email",
+  "date_of_birth",
   "native_place",
   "department",
-  "mentor",
-  "last_call_made_at",
-  "last_session_invited_at",
+  "interest_level",
+  "metadata_tab",
+  "metadata",
   "last_session_attended_at",
-  "column_break_zlbq",
-  "email",
-  "hostel",
-  "outreach_project",
-  "date_of_birth",
   "contact",
-  "metadata"
+  "last_session_invited_at",
+  "outreach_project",
+  "last_attended_session",
+  "last_call_made_at"
  ],
  "fields": [
   {
@@ -90,7 +92,8 @@
    "fieldname": "mentor",
    "fieldtype": "Link",
    "label": "Mentor",
-   "options": "User"
+   "options": "User",
+   "search_index": 1
   },
   {
    "fieldname": "last_call_made_at",
@@ -99,7 +102,7 @@
    "read_only": 1
   },
   {
-   "fieldname": "last_session",
+   "fieldname": "last_attended_session",
    "fieldtype": "Data",
    "label": "Last Attended Session",
    "read_only": 1
@@ -117,13 +120,25 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_zlbq",
-   "fieldtype": "Column Break"
+   "fieldname": "metadata_tab",
+   "fieldtype": "Tab Break",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "interest_level",
+   "fieldtype": "Select",
+   "label": "Interest Level",
+   "options": "A+\nA\nB\nC\nD"
   }
  ],
- "links": [],
- "modified": "2025-10-18 09:24:20.341356",
- "modified_by": "iskconcdec@gmail.com",
+ "links": [
+  {
+   "link_doctype": "Followup Record",
+   "link_fieldname": "student"
+  }
+ ],
+ "modified": "2025-12-10 17:42:26.958708",
+ "modified_by": "Administrator",
  "module": "Outreach",
  "name": "Student",
  "naming_rule": "Expression",

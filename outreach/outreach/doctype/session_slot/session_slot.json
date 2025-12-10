@@ -53,8 +53,8 @@
   }
  ],
  "links": [],
- "modified": "2025-10-16 11:38:15.440549",
- "modified_by": "iskconcdec@gmail.com",
+ "modified": "2025-12-10 17:14:01.129642",
+ "modified_by": "Administrator",
  "module": "Outreach",
  "name": "Session Slot",
  "naming_rule": "Expression",
@@ -80,6 +80,7 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",

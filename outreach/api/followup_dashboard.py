@@ -89,7 +89,7 @@ def get_followup_records(volunteer=None, followup_session=None, session_stack=No
     student_names = [r.get("student") for r in records if r.get("student")]
     students = {}
     if student_names:
-        for s in frappe.get_all("Student", filters=[["name", "in", student_names]], fields=["name", "student_name", "phone", "last_session"]):
+        for s in frappe.get_all("Student", filters=[["name", "in", student_names]], fields=["name", "student_name", "phone", "last_attended_session"]):
             students[s.get("name")] = s
 
     # fetch slot labels for preferred slots in batch (use preferred_session_slot)
@@ -169,7 +169,7 @@ def update_followup_record(record_name, field, value):
             followup_session = frappe.get_doc("Followup Session", doc.followup_session)
             session_stack = followup_session.session_stack
             if session_stack:
-                frappe.db.set_value("Student", doc.student, "last_session", session_stack)
+                frappe.db.set_value("Student", doc.student, "last_attended_session", session_stack)
         except Exception:
             frappe.log_error(f"Failed to update Student.last_session for {doc.student}", "followup_dashboard.update_followup_record")
 
