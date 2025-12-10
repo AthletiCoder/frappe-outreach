@@ -60,6 +60,8 @@ doctype_list_js = {
 
 doctype_js = {
     "Followup Record": "public/js/followup_record.js",
+    "Session Slot": "public/js/session_slot.js",
+    "Followup Session": "public/js/followup_session.js",
 }
 
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}

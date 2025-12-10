@@ -64,8 +64,8 @@ frappe.query_reports["Student Attendance"] = {
                         read_only: 1,
                     },
                     {
-                        label: "Volunteer",
-                        fieldname: "volunteer",
+                        label: "Caller",
+                        fieldname: "caller",
                         fieldtype: "Link",
                         options: "User",
                         reqd: 1,
@@ -73,8 +73,8 @@ frappe.query_reports["Student Attendance"] = {
                 ],
                 primary_action_label: __("Assign"),
                 primary_action(values) {
-                    if (!values.followup_session || !values.volunteer) {
-                        frappe.msgprint(__("Followup Session and Volunteer are required."));
+                    if (!values.followup_session || !values.caller) {
+                        frappe.msgprint(__("Followup Session and Caller are required."));
                         return;
                     }
 
@@ -83,7 +83,7 @@ frappe.query_reports["Student Attendance"] = {
                         args: {
                             students: student_names,
                             followup_session: values.followup_session,
-                            volunteer: values.volunteer,
+                            caller: values.caller,
                         },
                         freeze: true,
                         freeze_message: __("Creating Followup Records..."),

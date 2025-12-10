@@ -23,15 +23,14 @@ frappe.listview_settings["Followup Record"] = {
             );
         }
 
-        // Quick filter: My Followups Today
-        listview.page.add_inner_button(__("My Followups Today"), () => {
+        listview.page.add_inner_button(__("Expected Boys"), () => {
             listview.filter_area.clear();
             listview.filter_area.add(
                 [[listview.doctype, "caller", "=", user]],
                 true
             );
             listview.filter_area.add([
-                [listview.doctype, "modified", ">=", frappe.datetime.get_today()],
+                [listview.doctype, "call_status", "=", "Available"],
             ]);
             listview.refresh();
         });
@@ -44,7 +43,7 @@ frappe.listview_settings["Followup Record"] = {
                 true
             );
             listview.filter_area.add([
-                [listview.doctype, "call_status", "=", "To Be Called"],
+                [listview.doctype, "call_status", "in", ",Didn't Pick"],
             ]);
             listview.refresh();
         });

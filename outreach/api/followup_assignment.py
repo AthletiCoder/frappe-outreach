@@ -25,7 +25,7 @@ def get_active_followup_sessions():
     ]
 
 @frappe.whitelist()
-def assign_students_to_followup(students, followup_session, volunteer):
+def assign_students_to_followup(students, followup_session, caller):
     """Assign selected students to an existing Followup Session."""
     if isinstance(students, str):
         students = json.loads(students)
@@ -48,8 +48,8 @@ def assign_students_to_followup(students, followup_session, volunteer):
         doc.student = student
         doc.followup_session = followup_session
         doc.session_stack = session_stack
-        doc.assigned_to = volunteer
-        doc.call_status = "To Be Called"
+        doc.caller = caller
+        doc.call_status = ""
         doc.insert(ignore_permissions=True)
         created.append(doc.name)
 
