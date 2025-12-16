@@ -1,0 +1,14 @@
+{
+  "report_name": "Stack Attendance by Mentor",
+  "name": "Stack Attendance by Mentor",
+  "doctype": "Report",
+  "ref_doctype": "Followup Record",
+  "is_standard": "No",
+  "report_type": "Script Report",
+  "disabled": 0,
+  "module": "Outreach",
+  "roles": [
+    {"role":"Outreach Coordinator"},
+    { "role":"System Manager"}
+  ]
+}

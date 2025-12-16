@@ -1,0 +1,14 @@
+{
+  "report_name": "Session Slot Attendance Summary",
+  "name": "Session Slot Attendance Summary",
+  "doctype": "Report",
+  "ref_doctype": "Session Slot",
+  "is_standard": "No",
+  "report_type": "Script Report",
+  "disabled": 0,
+  "module": "Outreach",
+  "roles": [
+    { "role": "Outreach Coordinator" },
+    { "role": "System Manager" }
+  ]
+}
